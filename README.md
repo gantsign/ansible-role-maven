@@ -1,6 +1,8 @@
 Ansible Role: Maven
 ===================
 
+[![Build Status](https://travis-ci.org/gantsign/ansible-role-maven.svg?branch=master)](https://travis-ci.org/gantsign/ansible-role-maven)
+
 Role to install the [Apache Maven](https://maven.apache.org) build tool.
 
 Requirements
