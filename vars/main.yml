@@ -1,2 +1,3 @@
 ---
-# vars file for maven
+# Filename of Maven redistributable package
+maven_redis_filename: "apache-maven-{{ maven_version }}-bin.tar.gz"
