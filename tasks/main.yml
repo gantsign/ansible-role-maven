@@ -79,7 +79,7 @@
 
 - name: install Maven facts
   tags: maven
-  sudo: yes
+  become: yes
   template:
     src: facts.j2
     dest: /etc/ansible/facts.d/maven.fact
