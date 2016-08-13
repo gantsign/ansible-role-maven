@@ -26,7 +26,7 @@ install:
   - ansible --version
 
   # Update apt
-  - sudo apt-get update
+  - sudo apt-get update -qq
 
 script:
   # Basic role syntax check
