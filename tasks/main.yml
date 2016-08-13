@@ -1,26 +1,22 @@
 ---
 - name: load version vars
-  tags: maven
   with_first_found:
     - ../vars/versions/{{ maven_version }}.yml
     - ../vars/versions/default.yml
   include_vars: "{{ item }}"
 
 - name: assert version vars
-  tags: maven
   assert:
     that:
       - maven_redis_sha256sum not in (None, "")
 
 - name: create local Ansible data directory
-  tags: maven
   file:
     state: directory
     mode: '0755'
     dest: "{{ local_ansible_data_path }}"
 
 - name: download Maven
-  tags: maven
   get_url:
     url: "{{ maven_mirror }}/{{ maven_redis_filename }}"
     dest: "{{ local_ansible_data_path }}/{{ maven_redis_filename }}"
@@ -31,7 +27,6 @@
     mode: '0644'
 
 - name: create Maven installation directory
-  tags: maven
   become: yes
   file:
     state: directory
@@ -41,7 +36,6 @@
     dest: "{{ maven_install_dir }}"
 
 - name: install Maven
-  tags: maven
   become: yes
   unarchive:
     src: "{{ local_ansible_data_path }}/{{ maven_redis_filename }}"
@@ -50,7 +44,6 @@
     creates: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}"
 
 - name: install mvn link
-  tags: maven
   become: yes
   file:
     state: link
@@ -59,7 +52,6 @@
     dest: "/usr/local/bin/mvn"
 
 - name: install mvnDebug link
-  tags: maven
   become: yes
   file:
     state: link
@@ -68,7 +60,6 @@
     dest: "/usr/local/bin/mvnDebug"
 
 - name: create Ansible facts.d directory
-  tags: maven
   become: yes
   file:
     state: directory
@@ -78,7 +69,6 @@
     mode: '0755'
 
 - name: install Maven facts
-  tags: maven
   become: yes
   template:
     src: facts.j2
@@ -88,6 +78,5 @@
     mode: 0644
 
 - name: re-read facts
-  tags: maven
   setup:
     filter: ansible_local
