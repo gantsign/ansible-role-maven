@@ -87,7 +87,7 @@
     group: 0
     mode: 0644
 
-- name: Re-read facts
+- name: re-read facts
   tags: maven
   setup:
     filter: ansible_local
