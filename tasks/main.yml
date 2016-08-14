@@ -13,7 +13,7 @@
 - name: create local Ansible data directory
   file:
     state: directory
-    mode: '0755'
+    mode: 'u=rwx,go=rx'
     dest: "{{ local_ansible_data_path }}"
 
 - name: download Maven
@@ -24,15 +24,15 @@
     force: false
     use_proxy: true
     validate_certs: true
-    mode: '0644'
+    mode: 'u=rw,go=r'
 
 - name: create Maven installation directory
   become: yes
   file:
     state: directory
-    owner: 0
-    group: 0
-    mode: '0755'
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
     dest: "{{ maven_install_dir }}"
 
 - name: install Maven
@@ -64,18 +64,18 @@
   file:
     state: directory
     dest: /etc/ansible/facts.d
-    owner: 0
-    group: 0
-    mode: '0755'
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
 
 - name: install Maven facts
   become: yes
   template:
     src: facts.j2
     dest: /etc/ansible/facts.d/maven.fact
-    owner: 0
-    group: 0
-    mode: 0644
+    owner: root
+    group: root
+    mode: 'u=rw,go=r'
 
 - name: re-read facts
   setup:
