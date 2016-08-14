@@ -1,14 +1,14 @@
 ---
 - name: load version vars
   with_first_found:
-    - ../vars/versions/{{ maven_version }}.yml
+    - "../vars/versions/{{ maven_version }}.yml"
     - ../vars/versions/default.yml
   include_vars: "{{ item }}"
 
 - name: assert version vars
   assert:
     that:
-      - maven_redis_sha256sum not in (None, "")
+      - "maven_redis_sha256sum not in (None, '')"
 
 - name: create local Ansible data directory
   file:
