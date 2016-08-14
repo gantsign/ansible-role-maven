@@ -2,4 +2,6 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ansible-role-maven
+    - role: ansible-role-maven
+      maven_version: '3.3.9'
+      maven_install_dir: /opt/maven

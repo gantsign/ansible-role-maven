@@ -35,12 +35,12 @@ script:
   # Run the playbook with ansible-playbook
   - ansible-playbook tests/test.yml -i tests/inventory
 
-  # Use sudo to get our mvn rather than the TravisCI mvn
-  - "readlink -f $(sudo which mvn)"
-
   # Check Maven is installed
-  - 'M2_HOME="$(dirname $(dirname $(readlink -f $(sudo which mvn))))" sudo mvn --version'
-  - readlink -f $(sudo which mvnDebug)
+  - file /usr/local/bin/mvn
+  - file /usr/local/bin/mvnDebug
+  # Since TravisCI comes with it's own mvn we have to explicitly run
+  # the mvn we installed.
+  - M2_HOME="/opt/maven/apache-maven-3.3.9" /usr/local/bin/mvn --version
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
