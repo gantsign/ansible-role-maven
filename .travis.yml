@@ -1,6 +1,6 @@
 ---
 language: python
-python: "2.7"
+python: '2.7'
 
 # Require the standard build environment
 sudo: required
@@ -8,39 +8,33 @@ sudo: required
 # Require Ubuntu 14.04
 dist: trusty
 
-# Require Java JDK
-jdk:
-  - oraclejdk8
+# Require Docker
+services:
+  - docker
 
-# Install ansible
-addons:
-  apt:
-    packages:
-    - python-pip
+# Cache Ansible and Molecule to speed things up
+cache:
+  - pip
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -o Dpkg::Options::='--force-confold' --force-yes -y docker-engine
 
 install:
-  # Install ansible
-  - sudo pip install ansible
+  # Install Ansible
+  - pip install ansible
 
-  # Check ansible version
+  # Install Molecule
+  - pip install molecule
+
+  # Check Ansible version
   - ansible --version
 
-  # Update apt
-  - sudo apt-get update -qq
+  # Check Molecule version
+  - molecule --version
 
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-
-  # Run the playbook with ansible-playbook
-  - ansible-playbook tests/test.yml -i tests/inventory
-
-  # Check Maven is installed
-  - file /usr/local/bin/mvn
-  - file /usr/local/bin/mvnDebug
-  # Since TravisCI comes with it's own mvn we have to explicitly run
-  # the mvn we installed.
-  - M2_HOME="/opt/maven/apache-maven-3.3.9" /usr/local/bin/mvn --version
+  - molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
