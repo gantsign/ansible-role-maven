@@ -1,6 +1,14 @@
 ---
-- hosts: localhost
+- hosts: all
   remote_user: root
+
+  pre_tasks:
+    - name: install jdk
+      become: yes
+      apt:
+        name: openjdk-8-jdk
+        state: present
+
   roles:
     - role: ansible-role-maven
       maven_version: '3.3.9'
