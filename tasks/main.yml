@@ -10,16 +10,16 @@
     that:
       - "maven_redis_sha256sum not in (None, '')"
 
-- name: create local Ansible data directory
+- name: create download directory
   file:
     state: directory
     mode: 'u=rwx,go=rx'
-    dest: "{{ local_ansible_data_path }}"
+    dest: "{{ maven_download_dir }}"
 
 - name: download Maven
   get_url:
     url: "{{ maven_mirror }}/{{ maven_redis_filename }}"
-    dest: "{{ local_ansible_data_path }}/{{ maven_redis_filename }}"
+    dest: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
     sha256sum: "{{ maven_redis_sha256sum }}"
     force: false
     use_proxy: true
@@ -38,7 +38,7 @@
 - name: install Maven
   become: yes
   unarchive:
-    src: "{{ local_ansible_data_path }}/{{ maven_redis_filename }}"
+    src: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
     dest: "{{ maven_install_dir }}"
     copy: false
     owner: root
