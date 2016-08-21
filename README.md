@@ -64,11 +64,11 @@ Role Facts
 
 This role exports the following Ansible facts for use by other roles:
 
-* `ansible_local.java.general.version`
+* `ansible_local.maven.general.version`
 
     * e.g. `3.3.9`
 
-* `ansible_local.java.general.home`
+* `ansible_local.maven.general.home`
 
     * e.g. `/opt/maven/apache-maven-3.3.9`
 
