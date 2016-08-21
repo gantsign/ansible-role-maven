@@ -30,6 +30,26 @@ maven_install_dir: /opt/maven
 maven_download_dir: "{{ x_ansible_download_dir | default('~/.ansible/tmp/downloads') }}"
 ```
 
+### Supported Maven versions
+
+The following versions of Maven are supported without any additional
+configuration (for other versions follow the Advanced Configuration
+instructions):
+
+* `3.3.9`
+
+Advanced Configuration
+----------------------
+
+The following role variable is dependent on the Maven version; to use a
+Maven version **not pre-configured by this role** you must configure the
+variable below:
+
+```yaml
+# SHA256 sum for the redistributable package (i.e. apache-maven-{{ maven_version }}-bin.tar.gz)
+maven_redis_sha256sum: 6e3e9c949ab4695a204f74038717aa7b2689b1be94875899ac1b3fe42800ff82
+```
+
 Example Playbook
 ----------------
 
