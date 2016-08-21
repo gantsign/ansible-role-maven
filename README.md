@@ -27,7 +27,7 @@ maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version|regex
 maven_install_dir: /opt/maven
 
 # Directory to store files downloaded for Maven installation
-maven_download_dir: "{{ x_ansible_download_dir | default('/tmp/ansible/data') }}"
+maven_download_dir: "{{ x_ansible_download_dir | default('~/.ansible/tmp/downloads') }}"
 ```
 
 Example Playbook
