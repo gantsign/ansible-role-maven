@@ -21,9 +21,9 @@
     url: "{{ maven_mirror }}/{{ maven_redis_filename }}"
     dest: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
     sha256sum: "{{ maven_redis_sha256sum }}"
-    force: false
-    use_proxy: true
-    validate_certs: true
+    force: no
+    use_proxy: yes
+    validate_certs: yes
     mode: 'u=rw,go=r'
 
 - name: create Maven installation directory
@@ -40,7 +40,7 @@
   unarchive:
     src: "{{ maven_download_dir }}/{{ maven_redis_filename }}"
     dest: "{{ maven_install_dir }}"
-    copy: false
+    copy: no
     owner: root
     group: root
     mode: 'go-w'
@@ -50,7 +50,7 @@
   become: yes
   file:
     state: link
-    force: true
+    force: yes
     src: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn"
     dest: "/usr/local/bin/mvn"
     owner: root
@@ -61,7 +61,7 @@
   become: yes
   file:
     state: link
-    force: true
+    force: yes
     src: "{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvnDebug"
     dest: "/usr/local/bin/mvnDebug"
     owner: root
