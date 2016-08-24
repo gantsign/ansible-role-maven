@@ -37,6 +37,8 @@ configuration (for other versions follow the Advanced Configuration
 instructions):
 
 * `3.3.9`
+* `3.2.5`
+* `3.1.1`
 
 Advanced Configuration
 ----------------------
