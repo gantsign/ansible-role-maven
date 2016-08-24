@@ -9,7 +9,28 @@ Role to install the [Apache Maven](https://maven.apache.org) build tool.
 Requirements
 ------------
 
+* Ansible >= 1.9
+
 * Ubuntu
+
+    * Trusty (14.04)
+    * Wily (15.10)
+    * Xenial (16.04)
+    * Note: other Ubuntu versions are likely to work but have not been tested.
+
+* Java SE Development Kit (JDK)
+
+    * The required JDK version is dependent on the Apache Maven version
+
+        | Maven Version | Minimum JDK Version |
+        | ------------: | ------------------: |
+        |         3.3.x |                   7 |
+        |         3.2.x |                   6 |
+        |         3.1.x |                   5 |
+
+    * Recommendation: use the
+      [gantsign.java](https://galaxy.ansible.com/gantsign/java) role if you
+      want to install the Oracle JDK rather than OpenJDK.
 
 Role Variables
 --------------
