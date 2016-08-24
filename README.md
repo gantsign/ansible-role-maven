@@ -31,7 +31,7 @@ maven_install_dir: /opt/maven
 maven_download_dir: "{{ x_ansible_download_dir | default('~/.ansible/tmp/downloads') }}"
 ```
 
-### Supported Maven versions
+### Supported Maven Versions
 
 The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
