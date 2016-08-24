@@ -96,6 +96,20 @@ This role exports the following Ansible facts for use by other roles:
 
     * e.g. `/opt/maven/apache-maven-3.3.9`
 
+Related Roles
+-------------
+
+You may find the following related roles useful:
+
+* [gantsign.java](https://galaxy.ansible.com/gantsign/java) for installing the Oracle JDK.
+* [gantsign.maven-color](https://galaxy.ansible.com/gantsign/java) for colorizing the Maven console output.
+
+    *  Installs the [Maven Color](https://github.com/jcgay/maven-color) extension for Maven authored by [Jean-Christophe Gay](https://github.com/jcgay).
+
+* [gantsign.maven-notifier](https://galaxy.ansible.com/gantsign/java) for providing a GUI notification when a build ends.
+
+    *  Installs the [Maven Notifier](https://github.com/jcgay/maven-notifier) extension for Maven authored by [Jean-Christophe Gay](https://github.com/jcgay).
+
 Development & Testing
 ---------------------
 
