@@ -3,11 +3,18 @@
   remote_user: root
 
   pre_tasks:
-    - name: install jdk
+    - name: install jdk 7
+      become: yes
+      apt:
+        name: openjdk-7-jdk
+        state: present
+      when: "ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'"
+    - name: install jdk 8
       become: yes
       apt:
         name: openjdk-8-jdk
         state: present
+      when: "ansible_distribution == 'Ubuntu' and ansible_distribution_version != '14.04'"
 
   roles:
     - role: ansible-role-maven
