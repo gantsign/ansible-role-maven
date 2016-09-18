@@ -3,12 +3,21 @@
   remote_user: root
 
   pre_tasks:
+    # Travis CI doesn't provide all the Debian dependencies for the full JDK.
+    - name: install jre-headless 7
+      become: yes
+      apt:
+        name: openjdk-7-jre-headless
+        state: present
+      when: "ansible_distribution == 'Debian'"
+
     - name: install jdk 7
       become: yes
       apt:
         name: openjdk-7-jdk
         state: present
       when: "ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'"
+
     - name: install jdk 8
       become: yes
       apt:
