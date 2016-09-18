@@ -12,6 +12,12 @@ Requirements
 
 * Ansible >= 1.9
 
+* Debian
+
+    * Wheezy (7)
+    * Jessie (8)
+    * Note: other Debian versions are likely to work but have not been tested.
+
 * Ubuntu
 
     * Trusty (14.04)
