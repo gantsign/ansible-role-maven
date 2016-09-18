@@ -10,6 +10,13 @@
     that:
       - "maven_redis_sha256sum not in (None, '')"
 
+- name: install which (yum)
+  become: yes
+  yum:
+    name: which
+    state: present
+  when: "ansible_os_family == 'RedHat'"
+
 - name: create download directory
   file:
     state: directory

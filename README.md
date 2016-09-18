@@ -12,18 +12,29 @@ Requirements
 
 * Ansible >= 1.9
 
-* Debian
+* Linux Distribution
 
-    * Wheezy (7)
-    * Jessie (8)
-    * Note: other Debian versions are likely to work but have not been tested.
+    * Debian Family
 
-* Ubuntu
+        * Debian
 
-    * Trusty (14.04)
-    * Wily (15.10)
-    * Xenial (16.04)
-    * Note: other Ubuntu versions are likely to work but have not been tested.
+            * Wheezy (7)
+            * Jessie (8)
+
+        * Ubuntu
+
+            * Trusty (14.04)
+            * Wily (15.10)
+            * Xenial (16.04)
+
+    * RedHat Family
+
+        * CentOS
+
+            * 6
+            * 7
+
+    * Note: other versions are likely to work but have not been tested.
 
 * Java SE Development Kit (JDK)
 

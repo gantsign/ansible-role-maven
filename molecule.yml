@@ -16,3 +16,9 @@ docker:
   - name: ansible-role-maven-ubuntu-xenial
     image: ubuntu
     image_version: '16.04'
+  - name: ansible-role-maven-centos-6
+    image: centos
+    image_version: '6'
+  - name: ansible-role-maven-centos-7
+    image: centos
+    image_version: '7'
