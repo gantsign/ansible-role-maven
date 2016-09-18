@@ -10,12 +10,12 @@
     that:
       - "maven_redis_sha256sum not in (None, '')"
 
-- name: install which (yum)
+- name: install which (yum, dnf)
   become: yes
-  yum:
+  package:
     name: which
     state: present
-  when: ansible_pkg_mgr == 'yum'
+  when: ansible_pkg_mgr in ('yum', 'dnf')
 
 - name: create download directory
   file:
@@ -41,6 +41,16 @@
     group: root
     mode: 'u=rwx,go=rx'
     dest: "{{ maven_install_dir }}"
+
+- name: install unarchive module dependencies (dnf)
+  become: yes
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - tar
+    - unzip
+  when: ansible_pkg_mgr == 'dnf'
 
 - name: install Maven
   become: yes

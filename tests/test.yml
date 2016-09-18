@@ -25,12 +25,20 @@
         state: present
       when: "ansible_distribution == 'Ubuntu' and ansible_distribution_version != '14.04'"
 
-    - name: install jdk 8 (yum)
+    - name: install Ansible dnf dependency (dnf)
       become: yes
-      yum:
+      command: dnf install -y python2-dnf
+      args:
+        warn: no
+      changed_when: no
+      when: ansible_pkg_mgr == 'dnf'
+
+    - name: install jdk 8 (yum, dnf)
+      become: yes
+      package:
         name: java-1.8.0-openjdk-headless
         state: present
-      when: ansible_pkg_mgr == 'yum'
+      when: ansible_pkg_mgr in ('yum', 'dnf')
 
   roles:
     - role: ansible-role-maven
