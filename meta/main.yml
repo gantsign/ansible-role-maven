@@ -1,6 +1,6 @@
 galaxy_info:
   author: John Freeman
-  description: Role for downloading and installing Apache Maven.
+  description: Role for installing Apache Maven.
   company: GantSign Ltd.
   license: MIT
   min_ansible_version: 1.9
