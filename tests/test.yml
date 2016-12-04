@@ -40,6 +40,21 @@
         state: present
       when: ansible_pkg_mgr in ('yum', 'dnf')
 
+    - name: install Ansible zypper dependency (zypper)
+      become: yes
+      command: zypper install -y python-xml
+      args:
+        warn: no
+      changed_when: no
+      when: ansible_pkg_mgr == 'zypper'
+
+    - name: install jdk 8 (zypper)
+      become: yes
+      zypper:
+        name: java-1_8_0-openjdk-headless
+        state: present
+      when: ansible_pkg_mgr == 'zypper'
+
   roles:
     - role: ansible-role-maven
       maven_version: '3.3.9'
