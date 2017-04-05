@@ -13,15 +13,17 @@ def test_mvn_debug(Command):
     assert Command('which mvnDebug').rc == 0
 
 
-@pytest.mark.parametrize('command', [
-    'mvn',
-    'mvnDebug'
+@pytest.mark.parametrize('command,version_dir_pattern', [
+    ('mvn', 'apache-maven-3\\.3\\.[0-9]+$'),
+    ('mvnDebug', 'apache-maven-3\\.3\\.[0-9]+$'),
+    ('mvn', 'apache-maven-3\\.2\\.[0-9]+$'),
+    ('mvnDebug', 'apache-maven-3\\.2\\.[0-9]+$')
 ])
-def test_commands_installed(Command, File, command):
+def test_commands_installed(Command, File, command, version_dir_pattern):
 
     maven_home = Command.check_output('find %s | grep --color=never -E %s',
                                       '/opt/maven',
-                                      'apache-maven-3\\.3\\.[0-9]+$')
+                                      version_dir_pattern)
 
     command_file = File(maven_home + '/bin/' + command)
 
@@ -32,8 +34,12 @@ def test_commands_installed(Command, File, command):
     assert oct(command_file.mode) == '0755'
 
 
-def test_facts_installed(File):
-    fact_file = File('/etc/ansible/facts.d/maven.fact')
+@pytest.mark.parametrize('fact_group_name', [
+    'maven',
+    'maven_3_2'
+])
+def test_facts_installed(File, fact_group_name):
+    fact_file = File('/etc/ansible/facts.d/' + fact_group_name + '.fact')
 
     assert fact_file.exists
     assert fact_file.is_file

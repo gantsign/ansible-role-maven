@@ -82,6 +82,16 @@ maven_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.a
 # If this is the default installation, symbolic links to mvn and mvnDebug will
 # be created in /usr/local/bin
 maven_is_default_installation: yes
+
+# Name of the group of Ansible facts relating this Maven installation.
+#
+# Override if you want use this role more than once to install multiple versions
+# of Maven.
+#
+# e.g. maven_fact_group_name: maven_3_3
+# would change the Maven home fact to:
+# ansible_local.maven_3_2.general.home
+maven_fact_group_name: maven
 ```
 
 ### Supported Maven Versions
@@ -130,6 +140,23 @@ configuration will be required - see
       maven_version: '3.3.9'
 ```
 
+You can install the multiple versions of Maven by using this role more than
+once:
+
+```yaml
+- hosts: servers
+  roles:
+    - role: gantsign.maven
+      maven_version: '3.3.9'
+      maven_is_default_installation: yes
+      maven_fact_group_name: maven
+
+    - role: gantsign.maven
+      maven_version: '3.2.5'
+      maven_is_default_installation: no
+      maven_fact_group_name: maven_3_2
+```
+
 Role Facts
 ----------
 
@@ -142,6 +169,17 @@ This role exports the following Ansible facts for use by other roles:
 * `ansible_local.maven.general.home`
 
     * e.g. `/opt/maven/apache-maven-3.3.9`
+
+Overriding `maven_fact_group_name` will change the names of the facts e.g.:
+
+```yaml
+maven_fact_group_name: maven_3_2
+```
+
+Would change the name of the facts to:
+
+* `ansible_local.maven_3_2.general.version`
+* `ansible_local.maven_3_2.general.home`
 
 Related Roles
 -------------
