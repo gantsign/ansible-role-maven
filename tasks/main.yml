@@ -63,27 +63,8 @@
     mode: 'go-w'
     creates: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}'
 
-- name: install mvn link
-  become: yes
-  file:
-    state: link
-    force: yes
-    src: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn'
-    dest: '/usr/local/bin/mvn'
-    owner: root
-    group: root
-    mode: 'u=rwx,go=rx'
-
-- name: install mvnDebug link
-  become: yes
-  file:
-    state: link
-    force: yes
-    src: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvnDebug'
-    dest: '/usr/local/bin/mvnDebug'
-    owner: root
-    group: root
-    mode: 'u=rwx,go=rx'
+- include: create-symbolic-links.yml
+  when: maven_is_default_installation
 
 - name: create Ansible facts.d directory
   become: yes

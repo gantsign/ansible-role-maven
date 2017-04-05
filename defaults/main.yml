@@ -10,3 +10,7 @@ maven_install_dir: /opt/maven
 
 # Directory to store files downloaded for Maven installation
 maven_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
+
+# If this is the default installation, symbolic links to mvn and mvnDebug will
+# be created in /usr/local/bin
+maven_is_default_installation: yes
