@@ -102,13 +102,28 @@ variable below:
 maven_redis_sha256sum: '6e3e9c949ab4695a204f74038717aa7b2689b1be94875899ac1b3fe42800ff82'
 ```
 
-Example Playbook
-----------------
+Example Playbooks
+-----------------
+
+By default this role will install the latest version of Maven supported by this
+role:
 
 ```yaml
 - hosts: servers
   roles:
     - role: gantsign.maven
+```
+
+You can install a specific version of Maven by specifying the `maven_version`
+(note: if the version is not currently supported by this role then additional
+configuration will be required - see
+[Advanced Configuration](#advanced-configuration)):
+
+```yaml
+- hosts: servers
+  roles:
+    - role: gantsign.maven
+      maven_version: '3.3.9'
 ```
 
 Role Facts
