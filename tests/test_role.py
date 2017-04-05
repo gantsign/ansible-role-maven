@@ -30,3 +30,13 @@ def test_commands_installed(Command, File, command):
     assert command_file.user == 'root'
     assert command_file.group == 'root'
     assert oct(command_file.mode) == '0755'
+
+
+def test_facts_installed(File):
+    fact_file = File('/etc/ansible/facts.d/maven.fact')
+
+    assert fact_file.exists
+    assert fact_file.is_file
+    assert fact_file.user == 'root'
+    assert fact_file.group == 'root'
+    assert oct(fact_file.mode) == '0644'
