@@ -108,7 +108,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-     - { role: gantsign.maven }
+    - role: gantsign.maven
 ```
 
 Role Facts
