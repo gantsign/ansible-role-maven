@@ -6,7 +6,7 @@ testinfra_hosts = AnsibleRunner('.molecule/ansible_inventory').get_hosts('all')
 
 
 def test_mvn(Command):
-    assert '3.3.9' in Command.check_output('mvn --version')
+    assert '3.5.0' in Command.check_output('mvn --version')
 
 
 def test_mvn_debug(Command):
@@ -14,10 +14,10 @@ def test_mvn_debug(Command):
 
 
 @pytest.mark.parametrize('command,version_dir_pattern', [
+    ('mvn', 'apache-maven-3\\.5\\.[0-9]+$'),
+    ('mvnDebug', 'apache-maven-3\\.5\\.[0-9]+$'),
     ('mvn', 'apache-maven-3\\.3\\.[0-9]+$'),
-    ('mvnDebug', 'apache-maven-3\\.3\\.[0-9]+$'),
-    ('mvn', 'apache-maven-3\\.2\\.[0-9]+$'),
-    ('mvnDebug', 'apache-maven-3\\.2\\.[0-9]+$')
+    ('mvnDebug', 'apache-maven-3\\.3\\.[0-9]+$')
 ])
 def test_commands_installed(Command, File, command, version_dir_pattern):
 
@@ -36,7 +36,7 @@ def test_commands_installed(Command, File, command, version_dir_pattern):
 
 @pytest.mark.parametrize('fact_group_name', [
     'maven',
-    'maven_3_2'
+    'maven_3_3'
 ])
 def test_facts_installed(File, fact_group_name):
     fact_file = File('/etc/ansible/facts.d/' + fact_group_name + '.fact')

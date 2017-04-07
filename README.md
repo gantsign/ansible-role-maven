@@ -52,6 +52,7 @@ Requirements
 
         | Maven Version | Minimum JDK Version |
         | ------------: | ------------------: |
+        |         3.5.x |                   7 |
         |         3.3.x |                   7 |
         |         3.2.x |                   6 |
         |         3.1.x |                   5 |
@@ -68,7 +69,7 @@ are shown below):
 
 ```yaml
 # Maven version number
-maven_version: '3.3.9'
+maven_version: '3.5.0'
 
 # Mirror to download the Maven redistributable package from
 maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version|regex_replace('\\..*', '') }}/{{ maven_version }}/binaries"
@@ -100,6 +101,7 @@ The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
 instructions):
 
+* `3.5.0`
 * `3.3.9`
 * `3.2.5`
 * `3.1.1`
@@ -194,6 +196,8 @@ You may find the following related roles useful:
 
     * Installs the [Maven Color](https://github.com/jcgay/maven-color) extension
       for Maven authored by [Jean-Christophe Gay](https://github.com/jcgay).
+    * **Maven 3.5 has built in support color output**, so there's no need to
+      install this extension if using Maven 3.5.
 
 * [gantsign.maven-notifier](https://galaxy.ansible.com/gantsign/maven-notifier)
   for providing a GUI notification when a build ends.
