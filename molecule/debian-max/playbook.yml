@@ -4,10 +4,10 @@
 
   pre_tasks:
     # Travis CI doesn't provide all the Debian dependencies for the full JDK.
-    - name: install jre-headless 7
+    - name: install jre-headless 8
       become: yes
       apt:
-        name: openjdk-7-jre-headless
+        name: openjdk-8-jre-headless
         state: present
 
   roles:
