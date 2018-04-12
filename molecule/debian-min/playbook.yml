@@ -3,10 +3,11 @@
   hosts: all
 
   pre_tasks:
-    - name: install jdk 8 (apt)
+    # Travis CI doesn't provide all the Debian dependencies for the full JDK.
+    - name: install jre-headless 7
       become: yes
       apt:
-        name: openjdk-8-jdk
+        name: openjdk-7-jre-headless
         state: present
 
   roles:
@@ -14,20 +15,9 @@
       maven_version: '3.5.0'
       maven_install_dir: /opt/maven
 
-    - role: ansible-role-maven
-      maven_version: '3.3.9'
-      maven_is_default_installation: no
-      maven_fact_group_name: maven_3_3
-
   post_tasks:
     - name: verify default maven facts
       assert:
         that:
           - ansible_local.maven.general.version is defined
           - ansible_local.maven.general.home is defined
-
-    - name: verify maven 3.3 facts
-      assert:
-        that:
-          - ansible_local.maven_3_3.general.version is defined
-          - ansible_local.maven_3_3.general.home is defined

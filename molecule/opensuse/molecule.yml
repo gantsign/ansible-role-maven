@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+lint:
+  name: yamllint
+
+platforms:
+  - name: ansible-role-maven-opensuse-leap
+    image: opensuse:42.2
+
+provisioner:
+  name: ansible
+  playbooks:
+    create: ../default/create.yml
+    destroy: ../default/destroy.yml
+    prepare: ../default/prepare.yml
+  lint:
+    name: ansible-lint
+
+scenario:
+  name: opensuse
+
+verifier:
+  name: testinfra
+  directory: ../single/tests/
+  lint:
+    name: flake8

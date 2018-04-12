@@ -1,0 +1,22 @@
+---
+- name: Converge
+  hosts: all
+
+  pre_tasks:
+    - name: install jdk 8 (zypper)
+      become: yes
+      zypper:
+        name: java-1_8_0-openjdk-headless
+        state: present
+
+  roles:
+    - role: ansible-role-maven
+      maven_version: '3.5.0'
+      maven_install_dir: /opt/maven
+
+  post_tasks:
+    - name: verify default maven facts
+      assert:
+        that:
+          - ansible_local.maven.general.version is defined
+          - ansible_local.maven.general.home is defined
