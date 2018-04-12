@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  remote_user: root
+- name: Converge
+  hosts: all
 
   pre_tasks:
     # Travis CI doesn't provide all the Debian dependencies for the full JDK.
