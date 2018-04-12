@@ -8,7 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_mvn(Command):
-    assert '3.5.0' in Command.check_output('mvn --version')
+    assert '3.5.2' in Command.check_output('mvn --version')
 
 
 def test_mvn_debug(Command):
