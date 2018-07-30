@@ -30,4 +30,5 @@ galaxy_info:
     - maven
     - mvn
     - java
+    - development
 dependencies: []
