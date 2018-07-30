@@ -31,28 +31,28 @@ matrix:
         - ANSIBLE_VERSION=2.3.3
         - MOLECULE_SCENARIO=ubuntu-min
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=default
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=centos-min
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=centos-max
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=debian-min
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=debian-max
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=fedora
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=opensuse
     - env:
-        - ANSIBLE_VERSION=2.4.4
+        - ANSIBLE_VERSION=2.6.2
         - MOLECULE_SCENARIO=ubuntu-min
 
 # Require the standard build environment
