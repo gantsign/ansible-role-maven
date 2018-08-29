@@ -9,7 +9,7 @@ lint:
   name: yamllint
 
 platforms:
-  - name: ansible-role-maven-centos-6
+  - name: ansible-role-maven-centos-min
     image: centos:6
 
 provisioner:
