@@ -9,7 +9,7 @@ lint:
   name: yamllint
 
 platforms:
-  - name: ansible-role-maven-opensuse-leap
+  - name: ansible-role-maven-opensuse
     image: opensuse:42.3
 
 provisioner:

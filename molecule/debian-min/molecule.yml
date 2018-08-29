@@ -9,7 +9,7 @@ lint:
   name: yamllint
 
 platforms:
-  - name: ansible-role-maven-debian-wheezy
+  - name: ansible-role-maven-debian-min
     image: debian:7
 
 provisioner:
