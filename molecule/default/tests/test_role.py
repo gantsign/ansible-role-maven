@@ -8,7 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_mvn(host):
-    assert '3.5.4' in host.check_output('mvn --version')
+    assert '3.6.0' in host.check_output('mvn --version')
 
 
 def test_mvn_debug(host):
@@ -16,8 +16,8 @@ def test_mvn_debug(host):
 
 
 @pytest.mark.parametrize('command,version_dir_pattern', [
-    ('mvn', 'apache-maven-3\\.5\\.[0-9]+$'),
-    ('mvnDebug', 'apache-maven-3\\.5\\.[0-9]+$'),
+    ('mvn', 'apache-maven-3\\.6\\.[0-9]+$'),
+    ('mvnDebug', 'apache-maven-3\\.6\\.[0-9]+$'),
     ('mvn', 'apache-maven-3\\.3\\.[0-9]+$'),
     ('mvnDebug', 'apache-maven-3\\.3\\.[0-9]+$')
 ])
