@@ -192,14 +192,6 @@ You may find the following related roles useful:
 * [gantsign.java](https://galaxy.ansible.com/gantsign/java) for installing the
   JDK.
 
-* [gantsign.maven-color](https://galaxy.ansible.com/gantsign/maven-color) for
-  colorizing the Maven console output.
-
-    * Installs the [Maven Color](https://github.com/jcgay/maven-color) extension
-      for Maven authored by [Jean-Christophe Gay](https://github.com/jcgay).
-    * **Maven 3.5 has built in support color output**, so there's no need to
-      install this extension if using Maven 3.5.
-
 * [gantsign.maven-notifier](https://galaxy.ansible.com/gantsign/maven-notifier)
   for providing a GUI notification when a build ends.
 
