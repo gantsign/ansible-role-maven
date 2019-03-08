@@ -58,10 +58,6 @@ Requirements
         |         3.2.x |                   6 |
         |         3.1.x |                   5 |
 
-    * Recommendation: use the
-      [gantsign.java](https://galaxy.ansible.com/gantsign/java) role if you
-      want to install the Oracle JDK rather than OpenJDK.
-
 Role Variables
 --------------
 
@@ -194,7 +190,7 @@ Related Roles
 You may find the following related roles useful:
 
 * [gantsign.java](https://galaxy.ansible.com/gantsign/java) for installing the
-  Oracle JDK.
+  JDK.
 
 * [gantsign.maven-color](https://galaxy.ansible.com/gantsign/maven-color) for
   colorizing the Maven console output.
