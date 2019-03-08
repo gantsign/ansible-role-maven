@@ -52,6 +52,7 @@ Requirements
 
         | Maven Version | Minimum JDK Version |
         | ------------: | ------------------: |
+        |         3.6.x |                   7 |
         |         3.5.x |                   7 |
         |         3.3.x |                   7 |
         |         3.2.x |                   6 |
