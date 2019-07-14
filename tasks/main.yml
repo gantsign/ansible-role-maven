@@ -31,6 +31,7 @@
     force: no
     use_proxy: yes
     validate_certs: yes
+    timeout: '{{ maven_download_timeout }}'
     mode: 'u=rw,go=r'
 
 - name: create Maven installation directory
