@@ -11,7 +11,7 @@
 
   roles:
     - role: ansible-role-maven
-      maven_version: '3.6.1'
+      maven_version: '3.6.2'
       maven_install_dir: /opt/maven
 
     - role: ansible-role-maven
