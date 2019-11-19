@@ -9,6 +9,12 @@
         name: java-1.8.0-openjdk-headless
         state: present
 
+    - name: install find
+      become: yes
+      package:
+        name: findutils
+        state: present
+
   roles:
     - role: ansible-role-maven
       maven_version: '3.6.2'
