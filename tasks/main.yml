@@ -46,12 +46,11 @@
 - name: install unarchive module dependencies (dnf, zypper)
   become: yes
   package:
-    name: '{{ item }}'
+    name:
+      - tar
+      - unzip
+      - gzip
     state: present
-  with_items:
-    - tar
-    - unzip
-    - gzip
   when: ansible_pkg_mgr in ('dnf', 'zypper')
 
 - name: install Maven
