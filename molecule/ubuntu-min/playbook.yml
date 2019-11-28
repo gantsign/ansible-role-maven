@@ -3,10 +3,10 @@
   hosts: all
 
   pre_tasks:
-    - name: install jdk 7
+    - name: install jdk 8
       become: yes
       apt:
-        name: openjdk-7-jdk
+        name: openjdk-8-jdk-headless
         state: present
 
   roles:
