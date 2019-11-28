@@ -23,7 +23,6 @@ Requirements
 
         * Ubuntu
 
-            * Trusty (14.04)
             * Xenial (16.04)
             * Bionic (18.04)
 
@@ -66,7 +65,7 @@ are shown below):
 
 ```yaml
 # Maven version number
-maven_version: '3.6.2'
+maven_version: '3.6.3'
 
 # Mirror to download the Maven redistributable package from
 maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version|regex_replace('\\..*', '') }}/{{ maven_version }}/binaries"
@@ -101,6 +100,7 @@ The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
 instructions):
 
+* `3.6.3`
 * `3.6.2`
 * `3.6.1`
 * `3.6.0`
