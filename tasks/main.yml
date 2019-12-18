@@ -10,6 +10,16 @@
     that:
       - "maven_redis_sha256sum not in (None, '')"
 
+- block:
+    - name: Auto-detect the primary group of the root user
+      command: id -gn root
+      register: root_main_group_result
+      when: maven_group is not defined
+
+    - set_fact:
+        maven_group: '{{ root_main_group_result.stdout | trim }}'
+      when: maven_group is not defined
+
 - name: install which (yum, dnf, zypper)
   become: yes
   package:
@@ -39,7 +49,7 @@
   file:
     state: directory
     owner: root
-    group: root
+    group: '{{ maven_group }}'
     mode: 'u=rwx,go=rx'
     dest: '{{ maven_install_dir }}'
 
@@ -60,7 +70,7 @@
     dest: '{{ maven_install_dir }}'
     copy: no
     owner: root
-    group: root
+    group: '{{ maven_group }}'
     mode: 'go-w'
     creates: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}'
 
@@ -74,7 +84,7 @@
     state: directory
     dest: /etc/ansible/facts.d
     owner: root
-    group: root
+    group: '{{ maven_group }}'
     mode: 'u=rwx,go=rx'
 
 - name: install Maven facts
@@ -83,7 +93,7 @@
     src: facts.j2
     dest: '/etc/ansible/facts.d/{{ maven_fact_group_name }}.fact'
     owner: root
-    group: root
+    group: '{{ maven_group }}'
     mode: 'u=rw,go=r'
 
 - name: re-read facts
