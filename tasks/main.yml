@@ -10,15 +10,14 @@
     that:
       - "maven_redis_sha256sum not in (None, '')"
 
-- block:
-    - name: Auto-detect the primary group of the root user
-      command: id -gn root
-      register: root_main_group_result
-      when: maven_group is not defined
+- name: Auto-detect the primary group of the root user
+  command: id -gn root
+  register: root_main_group_result
+  when: maven_group is not defined
 
-    - set_fact:
-        maven_group: '{{ root_main_group_result.stdout | trim }}'
-      when: maven_group is not defined
+- set_fact:
+    maven_group: '{{ root_main_group_result.stdout | trim }}'
+  when: maven_group is not defined
 
 - name: install which (yum, dnf, zypper)
   become: yes
