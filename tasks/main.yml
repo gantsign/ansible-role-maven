@@ -14,6 +14,7 @@
   command: id -gn root
   register: root_main_group_result
   when: maven_group is not defined
+  changed_when: false
 
 - name: Set the default UNIX group to be used by Maven installation
   set_fact:
