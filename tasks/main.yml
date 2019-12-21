@@ -15,7 +15,8 @@
   register: root_main_group_result
   when: maven_group is not defined
 
-- set_fact:
+- name: Set the default UNIX group to be used by Maven installation
+  set_fact:
     maven_group: '{{ root_main_group_result.stdout | trim }}'
   when: maven_group is not defined
 
