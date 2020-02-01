@@ -7,7 +7,8 @@
     src: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn'
     dest: '/usr/local/bin/mvn'
     owner: root
-    group: root
+    # Use group ID as group name varies by OS (e.g. root/wheel)
+    group: '0'
     mode: 'u=rwx,go=rx'
 
 - name: install mvnDebug link
@@ -18,5 +19,6 @@
     src: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvnDebug'
     dest: '/usr/local/bin/mvnDebug'
     owner: root
-    group: root
+    # Use group ID as group name varies by OS (e.g. root/wheel)
+    group: '0'
     mode: 'u=rwx,go=rx'
