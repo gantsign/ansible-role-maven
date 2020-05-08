@@ -59,9 +59,6 @@ matrix:
         - MOLECULEW_ANSIBLE=2.9.1
         - MOLECULE_SCENARIO=ubuntu-min
 
-# Require the standard build environment
-sudo: required
-
 # Require Ubuntu 16.04
 dist: xenial
 
