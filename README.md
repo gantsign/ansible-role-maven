@@ -1,7 +1,7 @@
 Ansible Role: Maven
 ===================
 
-[![Build Status](https://travis-ci.org/gantsign/ansible-role-maven.svg?branch=master)](https://travis-ci.org/gantsign/ansible-role-maven)
+[![Build Status](https://travis-ci.com/gantsign/ansible-role-maven.svg?branch=master)](https://travis-ci.com/gantsign/ansible-role-maven)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gantsign.maven-blue.svg)](https://galaxy.ansible.com/gantsign/maven)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/gantsign/ansible-role-maven/master/LICENSE)
 
