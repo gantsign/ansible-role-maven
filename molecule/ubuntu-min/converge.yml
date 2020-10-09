@@ -3,11 +3,15 @@
   hosts: all
 
   pre_tasks:
-    # Travis CI doesn't provide all the Debian dependencies for the full JDK.
-    - name: install jre-headless 8
+    - name: update apt cache
+      apt:
+        update_cache: yes
+      changed_when: no
+
+    - name: install jdk 8
       become: yes
       apt:
-        name: openjdk-8-jre-headless
+        name: openjdk-8-jdk-headless
         state: present
 
   roles:
