@@ -1,10 +1,4 @@
 import pytest
-import os
-
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
 
 def test_mvn(host):
@@ -31,7 +25,7 @@ def test_commands_installed(host, command, version_dir_pattern):
     assert command_file.is_file
     assert command_file.user == 'root'
     assert command_file.group == 'root'
-    assert oct(command_file.mode) == '0755'
+    assert oct(command_file.mode) == '0o755'
 
 
 def test_facts_installed(host):
@@ -41,4 +35,4 @@ def test_facts_installed(host):
     assert fact_file.is_file
     assert fact_file.user == 'root'
     assert fact_file.group == 'root'
-    assert oct(fact_file.mode) == '0644'
+    assert oct(fact_file.mode) == '0o644'
