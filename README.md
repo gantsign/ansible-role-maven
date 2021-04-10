@@ -51,6 +51,7 @@ Requirements
 
         | Maven Version | Minimum JDK Version |
         | ------------: | ------------------: |
+        |         3.8.x |                   7 |
         |         3.6.x |                   7 |
         |         3.5.x |                   7 |
         |         3.3.x |                   7 |
@@ -65,7 +66,7 @@ are shown below):
 
 ```yaml
 # Maven version number
-maven_version: '3.6.3'
+maven_version: '3.8.1'
 
 # Mirror to download the Maven redistributable package from
 maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version|regex_replace('\\..*', '') }}/{{ maven_version }}/binaries"
@@ -100,6 +101,7 @@ The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
 instructions):
 
+* `3.8.1`
 * `3.6.3`
 * `3.6.2`
 * `3.6.1`
