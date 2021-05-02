@@ -27,3 +27,7 @@ maven_is_default_installation: yes
 # would change the Maven home fact to:
 # ansible_local.maven_3_2.general.home
 maven_fact_group_name: maven
+
+maven_use_proxy: yes
+
+maven_validate_certs: yes
