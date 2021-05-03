@@ -29,8 +29,8 @@
     dest: '{{ maven_download_dir }}/{{ maven_redis_filename }}'
     checksum: 'sha256:{{ maven_redis_sha256sum }}'
     force: no
-    use_proxy: yes
-    validate_certs: yes
+    use_proxy: '{{ maven_use_proxy }}'
+    validate_certs: '{{ maven_validate_certs }}'
     timeout: '{{ maven_download_timeout }}'
     mode: 'u=rw,go=r'
 
