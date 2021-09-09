@@ -2,7 +2,7 @@ import pytest
 
 
 def test_mvn(host):
-    assert '3.6.3' in host.check_output('mvn --version')
+    assert '3.8.2' in host.check_output('mvn --version')
 
 
 def test_mvn_debug(host):
@@ -10,8 +10,8 @@ def test_mvn_debug(host):
 
 
 @pytest.mark.parametrize('command,version_dir_pattern', [
-    ('mvn', 'apache-maven-3\\.6\\.[0-9]+$'),
-    ('mvnDebug', 'apache-maven-3\\.6\\.[0-9]+$'),
+    ('mvn', 'apache-maven-3\\.8\\.[0-9]+$'),
+    ('mvnDebug', 'apache-maven-3\\.8\\.[0-9]+$'),
     ('mvn', 'apache-maven-3\\.3\\.[0-9]+$'),
     ('mvnDebug', 'apache-maven-3\\.3\\.[0-9]+$')
 ])
