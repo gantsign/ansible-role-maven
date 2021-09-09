@@ -14,7 +14,6 @@ lint: |
 platforms:
   - name: ansible-role-maven-debian-max
     image: debian:11
-    dockerfile: ../default/Dockerfile.j2
 
 provisioner:
   name: ansible
