@@ -29,7 +29,7 @@ Requirements
 
     * RedHat Family
 
-        * CentOS
+        * Rocky Linux
 
             * 8
 
