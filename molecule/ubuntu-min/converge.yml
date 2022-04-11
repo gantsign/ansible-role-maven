@@ -16,7 +16,7 @@
 
   roles:
     - role: ansible-role-maven
-      maven_version: '3.8.4'
+      maven_version: '3.8.5'
       maven_install_dir: /opt/maven
 
   post_tasks:
