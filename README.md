@@ -66,7 +66,7 @@ are shown below):
 
 ```yaml
 # Maven version number
-maven_version: '3.8.6'
+maven_version: '3.8.7'
 
 # Mirror to download the Maven redistributable package from
 maven_mirror: "http://archive.apache.org/dist/maven/maven-{{ maven_version|regex_replace('\\..*', '') }}/{{ maven_version }}/binaries"
@@ -107,6 +107,7 @@ The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
 instructions):
 
+* `3.8.7`
 * `3.8.6`
 * `3.8.5`
 * `3.8.4`
