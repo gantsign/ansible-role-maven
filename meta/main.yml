@@ -4,17 +4,17 @@ galaxy_info:
   description: Role for installing Apache Maven.
   company: GantSign Ltd.
   license: MIT
-  min_ansible_version: 2.9
+  min_ansible_version: '2.9'
   platforms:
     - name: EL
       versions:
-        - 8
+        - '8'
     - name: Fedora
       versions:
-        - 34
+        - '34'
     - name: opensuse
       versions:
-        - 15.2
+        - '15.2'
     - name: Ubuntu
       versions:
         - bionic

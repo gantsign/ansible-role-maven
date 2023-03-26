@@ -3,14 +3,14 @@
   hosts: all
 
   pre_tasks:
-    - name: update apt cache
-      apt:
-        update_cache: yes
-      changed_when: no
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+      changed_when: false
 
-    - name: install jre-headless 8
-      become: yes
-      apt:
+    - name: Install jre-headless 8
+      become: true
+      ansible.builtin.apt:
         name: openjdk-8-jre-headless
         state: present
 
@@ -20,8 +20,8 @@
       maven_install_dir: /opt/maven
 
   post_tasks:
-    - name: verify default maven facts
-      assert:
+    - name: Verify default maven facts
+      ansible.builtin.assert:
         that:
           - ansible_local.maven.general.version is defined
           - ansible_local.maven.general.home is defined

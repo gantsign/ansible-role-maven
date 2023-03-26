@@ -1,42 +1,42 @@
 ---
-- name: load version vars
+- name: Load version vars
   with_first_found:
     - '../vars/versions/{{ maven_version }}.yml'
     - ../vars/versions/default.yml
-  include_vars: '{{ item }}'
+  ansible.builtin.include_vars: '{{ item }}'
 
-- name: assert version vars
-  assert:
+- name: Assert version vars
+  ansible.builtin.assert:
     that:
       - "maven_redis_sha256sum not in (None, '')"
 
-- name: install which (yum, dnf, zypper)
-  become: yes
-  package:
+- name: Install which (yum, dnf, zypper)
+  become: true
+  ansible.builtin.package:
     name: which
     state: present
   when: ansible_pkg_mgr in ('yum', 'dnf', 'zypper')
 
-- name: create download directory
-  file:
+- name: Create download directory
+  ansible.builtin.file:
     state: directory
     mode: 'u=rwx,go=rx'
     dest: '{{ maven_download_dir }}'
 
-- name: download Maven
-  get_url:
+- name: Download Maven
+  ansible.builtin.get_url:
     url: '{{ maven_mirror }}/{{ maven_redis_filename }}'
     dest: '{{ maven_download_dir }}/{{ maven_redis_filename }}'
     checksum: 'sha256:{{ maven_redis_sha256sum }}'
-    force: no
+    force: false
     use_proxy: '{{ maven_use_proxy }}'
     validate_certs: '{{ maven_validate_certs }}'
     timeout: '{{ maven_download_timeout }}'
     mode: 'u=rw,go=r'
 
-- name: create Maven installation directory
-  become: yes
-  file:
+- name: Create Maven installation directory
+  become: true
+  ansible.builtin.file:
     state: directory
     owner: root
     # Use group ID as group name varies by OS (e.g. root/wheel)
@@ -44,9 +44,9 @@
     mode: 'u=rwx,go=rx'
     dest: '{{ maven_install_dir }}'
 
-- name: install unarchive module dependencies (dnf, zypper)
-  become: yes
-  package:
+- name: Install unarchive module dependencies (dnf, zypper)
+  become: true
+  ansible.builtin.package:
     name:
       - tar
       - unzip
@@ -54,25 +54,25 @@
     state: present
   when: ansible_pkg_mgr in ('dnf', 'zypper')
 
-- name: install Maven
-  become: yes
-  unarchive:
+- name: Install Maven
+  become: true
+  ansible.builtin.unarchive:
     src: '{{ maven_download_dir }}/{{ maven_redis_filename }}'
     dest: '{{ maven_install_dir }}'
-    copy: no
+    copy: false
     owner: root
     # Use group ID as group name varies by OS (e.g. root/wheel)
     group: '0'
     mode: 'go-w'
     creates: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}'
 
-- name: create symbolic links
-  include_tasks: create-symbolic-links.yml
+- name: Create symbolic links
+  ansible.builtin.include_tasks: create-symbolic-links.yml
   when: maven_is_default_installation
 
-- name: create Ansible facts.d directory
-  become: yes
-  file:
+- name: Create Ansible facts.d directory
+  become: true
+  ansible.builtin.file:
     state: directory
     dest: /etc/ansible/facts.d
     owner: root
@@ -80,9 +80,9 @@
     group: '0'
     mode: 'u=rwx,go=rx'
 
-- name: install Maven facts
-  become: yes
-  template:
+- name: Install Maven facts
+  become: true
+  ansible.builtin.template:
     src: facts.j2
     dest: '/etc/ansible/facts.d/{{ maven_fact_group_name }}.fact'
     owner: root
@@ -90,6 +90,6 @@
     group: '0'
     mode: 'u=rw,go=r'
 
-- name: re-read facts
-  setup:
+- name: Re-read facts
+  ansible.builtin.setup:
     filter: ansible_local

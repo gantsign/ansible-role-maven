@@ -3,15 +3,15 @@
   hosts: all
 
   pre_tasks:
-    - name: install jdk 8
-      become: yes
-      package:
+    - name: Install jdk 8
+      become: true
+      ansible.builtin.package:
         name: java-1.8.0-openjdk-headless
         state: present
 
-    - name: install find
-      become: yes
-      package:
+    - name: Install find
+      become: true
+      ansible.builtin.package:
         name: findutils
         state: present
 
@@ -21,8 +21,8 @@
       maven_install_dir: /opt/maven
 
   post_tasks:
-    - name: verify default maven facts
-      assert:
+    - name: Verify default maven facts
+      ansible.builtin.assert:
         that:
           - ansible_local.maven.general.version is defined
           - ansible_local.maven.general.home is defined

@@ -82,14 +82,14 @@ maven_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.a
 maven_download_timeout: 10
 
 # Whether to use the proxy when downloading Maven (if the proxy environment variable is present)
-maven_use_proxy: yes
+maven_use_proxy: true
 
 # Whether to validate HTTPS certificates when downloading Maven
-maven_validate_certs: yes
+maven_validate_certs: true
 
 # If this is the default installation, symbolic links to mvn and mvnDebug will
 # be created in /usr/local/bin
-maven_is_default_installation: yes
+maven_is_default_installation: true
 
 # Name of the group of Ansible facts relating this Maven installation.
 #
@@ -174,12 +174,12 @@ once:
   roles:
     - role: gantsign.maven
       maven_version: '3.3.9'
-      maven_is_default_installation: yes
+      maven_is_default_installation: true
       maven_fact_group_name: maven
 
     - role: gantsign.maven
       maven_version: '3.2.5'
-      maven_is_default_installation: no
+      maven_is_default_installation: false
       maven_fact_group_name: maven_3_2
 ```
 

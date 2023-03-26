@@ -3,14 +3,14 @@
   hosts: all
 
   pre_tasks:
-    - name: update apt cache
-      apt:
-        update_cache: yes
-      changed_when: no
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+      changed_when: false
 
-    - name: install jdk 8 (apt)
-      become: yes
-      apt:
+    - name: Install jdk 8 (apt)
+      become: true
+      ansible.builtin.apt:
         name: openjdk-8-jdk
         state: present
 
@@ -21,18 +21,18 @@
 
     - role: ansible-role-maven
       maven_version: '3.3.9'
-      maven_is_default_installation: no
+      maven_is_default_installation: false
       maven_fact_group_name: maven_3_3
 
   post_tasks:
-    - name: verify default maven facts
-      assert:
+    - name: Verify default maven facts
+      ansible.builtin.assert:
         that:
           - ansible_local.maven.general.version is defined
           - ansible_local.maven.general.home is defined
 
-    - name: verify maven 3.3 facts
-      assert:
+    - name: Verify maven 3.3 facts
+      ansible.builtin.assert:
         that:
           - ansible_local.maven_3_3.general.version is defined
           - ansible_local.maven_3_3.general.home is defined

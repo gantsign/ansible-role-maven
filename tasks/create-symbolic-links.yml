@@ -1,9 +1,9 @@
 ---
-- name: install mvn link
-  become: yes
-  file:
+- name: Install mvn link
+  become: true
+  ansible.builtin.file:
     state: link
-    force: yes
+    force: true
     src: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvn'
     dest: '/usr/local/bin/mvn'
     owner: root
@@ -11,11 +11,11 @@
     group: '0'
     mode: 'u=rwx,go=rx'
 
-- name: install mvnDebug link
-  become: yes
-  file:
+- name: Install mvnDebug link
+  become: true
+  ansible.builtin.file:
     state: link
-    force: yes
+    force: true
     src: '{{ maven_install_dir }}/apache-maven-{{ maven_version }}/bin/mvnDebug'
     dest: '/usr/local/bin/mvnDebug'
     owner: root
