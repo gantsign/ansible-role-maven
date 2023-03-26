@@ -2,7 +2,7 @@ import pytest
 
 
 def test_mvn(host):
-    assert '3.9.0' in host.check_output('mvn --version')
+    assert '3.9.1' in host.check_output('mvn --version')
 
 
 def test_mvn_debug(host):
