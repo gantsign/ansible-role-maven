@@ -12,7 +12,7 @@
 
   roles:
     - role: ansible-role-maven
-      maven_version: '3.9.2'
+      maven_version: '3.9.3'
       maven_install_dir: /opt/maven
 
   post_tasks:
