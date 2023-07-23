@@ -15,7 +15,7 @@ lint: |
 
 platforms:
   - name: ansible-role-maven-debian-min
-    image: debian:9
+    image: debian:10
 
 provisioner:
   name: ansible
