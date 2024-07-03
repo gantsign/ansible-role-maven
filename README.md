@@ -107,6 +107,11 @@ The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
 instructions):
 
+* `4.0.0-beta-3`
+* `3.9.8`
+* `3.9.7`
+* `3.9.6`
+* `3.9.5`
 * `3.9.4`
 * `3.9.3`
 * `3.9.2`
