@@ -1,4 +1,3 @@
 ---
-# SHA512 sum for the redistributable package
-maven_redis_checksum: '900bdeeeae550d2d2b3920fe0e00e41b0069f32c019d566465015bdd1b3866395cbe016e22d95d25d51d3a5e614af2c83ec9b282d73309f644859bbad08b63db'
-maven_algo_checksum: 'sha512'
+# SHA256 sum for the redistributable package
+maven_redis_sha256sum: '809ef3220c6d179195c06c324cb9a6d34d8ecba566c5cfd8eb83167bc034117d'

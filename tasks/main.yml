@@ -2,15 +2,13 @@
 ---
 - name: Load version vars
   ansible.builtin.include_vars: "{{ __current_item }}"
-
-  #ansible.builtin.include_vars: '{{ item }}'
   with_items:
     - ../vars/versions/default.yml
     - '../vars/versions/{{ maven_version }}.yml'
   loop_control:
     loop_var: "__current_item"
 
-- name: If checksum setup
+- name: Assert version vars
   ansible.builtin.assert:
     that:
       - "maven_redis_checksum not in (None, '')"
