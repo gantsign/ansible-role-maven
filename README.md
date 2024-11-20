@@ -10,7 +10,7 @@ Role to install the [Apache Maven](https://maven.apache.org) build tool.
 Requirements
 ------------
 
-* Ansible Core >= 2.12
+* Ansible Core >= 2.16
 
 * Linux Distribution
 
