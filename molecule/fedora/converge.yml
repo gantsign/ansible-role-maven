@@ -4,6 +4,13 @@
   hosts: all
 
   pre_tasks:
+    # Workaround for Fedora 41 https://github.com/ansible/ansible/issues/84206
+    - name: Install python3-libdnf5
+      become: true
+      ansible.builtin.command: dnf install -y python3-libdnf5
+      when: ansible_facts.pkg_mgr == 'dnf5'
+      changed_when: false
+
     - name: Install jdk 8
       become: true
       ansible.builtin.package:
