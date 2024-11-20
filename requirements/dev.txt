@@ -8,14 +8,14 @@ ansible-compat==24.10.0
     # via
     #   ansible-lint
     #   molecule
-ansible-core==2.16.13
+ansible-core==2.17.6
     # via
-    #   -r /workspaces/ansible-role-maven/requirements/ansible-max.in
+    #   -r ansible-max.in
     #   ansible-compat
     #   ansible-lint
     #   molecule
 ansible-lint==24.10.0
-    # via -r /workspaces/ansible-role-maven/requirements/lint.in
+    # via -r lint.in
 attrs==24.2.0
     # via
     #   jsonschema
@@ -64,7 +64,7 @@ filelock==3.16.1
     #   tox
     #   virtualenv
 flake8==7.1.1
-    # via -r /workspaces/ansible-role-maven/requirements/lint.in
+    # via -r lint.in
 idna==3.10
     # via requests
 importlib-metadata==8.5.0
@@ -92,10 +92,10 @@ mdurl==0.1.2
     # via markdown-it-py
 molecule==24.9.0
     # via
-    #   -r /workspaces/ansible-role-maven/requirements/molecule.in
+    #   -r molecule.in
     #   molecule-plugins
 molecule-plugins[docker]==23.5.3
-    # via -r /workspaces/ansible-role-maven/requirements/molecule.in
+    # via -r molecule.in
 mypy-extensions==1.0.0
     # via black
 packaging==24.2
@@ -143,7 +143,7 @@ pyproject-hooks==1.2.0
 pytest==8.3.3
     # via pytest-testinfra
 pytest-testinfra==10.1.1
-    # via -r /workspaces/ansible-role-maven/requirements/molecule.in
+    # via -r molecule.in
 pyyaml==6.0.2
     # via
     #   ansible-compat
@@ -189,7 +189,7 @@ tomli==2.1.0
     #   pytest
     #   tox
 tox==4.23.2
-    # via -r /workspaces/ansible-role-maven/requirements/tox.in
+    # via -r tox.in
 typing-extensions==4.12.2
     # via
     #   black
@@ -209,7 +209,7 @@ wheel==0.45.0
     # via pip-tools
 yamllint==1.35.1
     # via
-    #   -r /workspaces/ansible-role-maven/requirements/lint.in
+    #   -r lint.in
     #   ansible-lint
 zipp==3.21.0
     # via importlib-metadata
