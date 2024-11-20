@@ -9,7 +9,7 @@ role_name_check: 2
 
 platforms:
   - name: ansible-role-maven-debian-min
-    image: debian:10
+    image: debian:11
 
 provisioner:
   name: ansible
