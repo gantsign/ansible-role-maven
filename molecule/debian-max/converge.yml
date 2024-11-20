@@ -9,10 +9,10 @@
         update_cache: true
       changed_when: false
 
-    - name: Install jre-headless 11
+    - name: Install jre-headless 17
       become: true
       ansible.builtin.apt:
-        name: openjdk-11-jre-headless
+        name: openjdk-17-jre-headless
         state: present
 
   roles:
