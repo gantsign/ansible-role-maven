@@ -16,7 +16,7 @@
   ansible.builtin.package:
     name: which
     state: present
-  when: ansible_pkg_mgr in ('yum', 'dnf', 'zypper')
+  when: ansible_pkg_mgr in ('yum', 'dnf', 'dnf5', 'zypper')
 
 - name: Create download directory
   ansible.builtin.file:
@@ -53,7 +53,7 @@
       - unzip
       - gzip
     state: present
-  when: ansible_pkg_mgr in ('dnf', 'zypper')
+  when: ansible_pkg_mgr in ('dnf', 'dnf5', 'zypper')
 
 - name: Install Maven
   become: true
