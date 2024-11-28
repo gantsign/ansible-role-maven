@@ -107,6 +107,11 @@ The following versions of Maven are supported without any additional
 configuration (for other versions follow the Advanced Configuration
 instructions):
 
+* `4.0.0-beta-3`
+* `3.9.8`
+* `3.9.7`
+* `3.9.6`
+* `3.9.5`
 * `3.9.4`
 * `3.9.3`
 * `3.9.2`
@@ -141,7 +146,7 @@ variable below:
 
 ```yaml
 # SHA256 sum for the redistributable package (i.e. apache-maven-{{ maven_version }}-bin.tar.gz)
-maven_redis_sha256sum: '6e3e9c949ab4695a204f74038717aa7b2689b1be94875899ac1b3fe42800ff82'
+maven_redis_checksum: '6e3e9c949ab4695a204f74038717aa7b2689b1be94875899ac1b3fe42800ff82'
 ```
 
 Example Playbooks

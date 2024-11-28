@@ -1,15 +1,17 @@
 # code: language=ansible
 ---
 - name: Load version vars
-  with_first_found:
-    - '../vars/versions/{{ maven_version }}.yml'
+  ansible.builtin.include_vars: "{{ __current_item }}"
+  with_items:
     - ../vars/versions/default.yml
-  ansible.builtin.include_vars: '{{ item }}'
+    - '../vars/versions/{{ maven_version }}.yml'
+  loop_control:
+    loop_var: "__current_item"
 
 - name: Assert version vars
   ansible.builtin.assert:
     that:
-      - "maven_redis_sha256sum not in (None, '')"
+      - "maven_redis_checksum not in (None, '')"
 
 - name: Install which (yum, dnf, zypper)
   become: true
@@ -28,7 +30,7 @@
   ansible.builtin.get_url:
     url: '{{ maven_mirror }}/{{ maven_redis_filename }}'
     dest: '{{ maven_download_dir }}/{{ maven_redis_filename }}'
-    checksum: 'sha256:{{ maven_redis_sha256sum }}'
+    checksum: '{{ maven_algo_checksum }}:{{ maven_redis_checksum }}'
     force: false
     use_proxy: '{{ maven_use_proxy }}'
     validate_certs: '{{ maven_validate_certs }}'
